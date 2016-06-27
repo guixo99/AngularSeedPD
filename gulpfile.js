@@ -1,12 +1,17 @@
 (function () {
   'use strict';
 
+  // Require gulp library
   var gulp = require("gulp");
-  var babel = require("gulp-babel");
-  var sourcemaps = require("gulp-sourcemaps");
+
+  // Require gulp plugins. This autorequire all libraries whose names starting with gulp-* and can be accessed by $.libraryName
+  var $ = require('gulp-load-plugins')();
+
   var browserify = require('browserify');
   var babelify = require('babelify');
   var source = require('vinyl-source-stream');
+  var del = require("del");
+  var runSequence = require('run-sequence');
 
 
   var base = {
@@ -41,11 +46,37 @@
     cssVendor: base.dist +'styles/vendor.css'
   };
 
+  gulp.task('clean:tmp', (cb) => {
+    return del(['./.tmp'], cb);
+  });
+
+  gulp.task('lint:scripts', function () {
+
+  });
+
   gulp.task('build', function () {
     return browserify(paths.entryApp, {debug: true})
-      .transform(babelify, {sourceMapsAbsolute: true, presets: ["es2015"]})
+      .transform(babelify, {sourceMapsAbsolute: true, presets: ['es2015']})
       .bundle()
       .pipe(source('bundle.js'))
       .pipe(gulp.dest(paths.jsBundle));
+  });
+
+  gulp.task('start:server', function() {
+    $.connect.server({
+      root: [base.app, '.tmp', 'bower_components'],
+      livereload: true,
+      port: 9000
+    });
+  });
+
+
+
+
+  gulp.task('serve', function (cb) {
+    runSequence('clean:tmp',
+      ['lint:scripts'],
+      ['start:server'],
+      cb);
   });
 }());
