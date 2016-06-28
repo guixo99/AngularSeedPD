@@ -10,7 +10,7 @@
  */
 
 angular
-  .module('gruntApp', [
+  .module('angularSeedPDApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -18,19 +18,21 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider
+      .state('home', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
+      .state('about', {
+        url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });
