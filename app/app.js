@@ -9,6 +9,9 @@
  * Main module of the application.
  */
 
+import Controllers from './controllers'
+import Services from './services'
+
 angular
   .module('angularSeedPDApp', [
     'ngAnimate',
@@ -16,7 +19,9 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    Controllers.name,
+    Services.name
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -26,13 +31,11 @@ angular
       .state('home', {
         url: '/',
         templateUrl: 'modules/main/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        controller: 'MainCtrl as main'
       })
       .state('about', {
         url: '/about',
         templateUrl: 'modules/about/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controller: 'AboutCtrl as about'
       });
   });

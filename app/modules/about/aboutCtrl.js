@@ -1,17 +1,17 @@
 'use strict';
 
 /**
- * @ngdoc function
- * @name baseApp.controller:AboutCtrl
+ * @name angularSeedPDApp.controller:AboutCtrl
  * @description
  * # AboutCtrl
- * Controller of the baseApp
+ * Controller of the angularSeedPDApp
  */
-angular.module('baseApp')
-  .controller('AboutCtrl', function () {
+export default class AboutCtrl {
+  constructor() {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+  }
+}
