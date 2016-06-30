@@ -25,13 +25,13 @@ angular
     $stateProvider
       .state('home', {
         url: '/',
-        templateUrl: 'views/main.html',
+        templateUrl: 'modules/main/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
       .state('about', {
         url: '/about',
-        templateUrl: 'views/about.html',
+        templateUrl: 'modules/about/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       });
