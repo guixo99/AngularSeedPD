@@ -66,9 +66,12 @@
    * Build tasks
    */
   gulp.task('build:compile:js', function () {
-    return browserify(paths.entryApp, {debug: true, fullPaths: true})
+    return browserify(paths.entryApp, {debug: true, fullPaths: true, ignoreMissing: false})
       .transform(babelify, {sourceMapsAbsolute: true, presets: ['es2015']})
-      .bundle()
+      .bundle().on('error', function (err) {
+        console.log(err.message);
+        this.emit('end');
+      })
       .pipe(source('app.js'))
       .pipe(gulp.dest(paths.jsBundles));
   });

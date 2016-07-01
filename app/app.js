@@ -9,8 +9,11 @@
  * Main module of the application.
  */
 
-import Controllers from './controllers'
-import Services from './services'
+import AppModule from './modules/app/module'
+
+import HomeModule from './modules/home/module';
+import AboutModule from './modules/about/module';
+import SharedModule from './modules/shared/module';
 
 angular
   .module('angularSeedPDApp', [
@@ -19,25 +22,19 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch',
     'ngMaterial',
-    Controllers.name,
-    Services.name
+    AppModule.name,
+    HomeModule.name,
+    AboutModule.name,
+    SharedModule.name
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/');
-
     $stateProvider
-      .state('app')
-      .state('home', {
+      .state('abstract-app', {
         url: '/',
-        templateUrl: 'modules/home/home.html',
-        controller: 'HomeCtrl as home'
-      })
-      .state('about', {
-        url: '/about',
-        templateUrl: 'modules/about/about.html',
-        controller: 'AboutCtrl as about'
+        abstract: true,
+        template: '<div ui-view></div>',
+        controller: 'AppCtrl as app'
       });
   });

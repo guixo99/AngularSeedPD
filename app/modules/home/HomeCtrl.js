@@ -1,6 +1,6 @@
 'use strict';
 
-import DataService from '../../services/dataService';
+import DataService from '../shared/DataService';
 
 /**
  * @name angularSeedPDApp.controller:MainCtrl
@@ -10,7 +10,7 @@ import DataService from '../../services/dataService';
  */
 export default class HomeCtrl {
   /*@ngInject*/
-  constructor($scope, DataService) {
+  constructor(DataService) {
     var self = this;
 
     self.awesomeThings = [
