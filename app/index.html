@@ -11,35 +11,23 @@
     <script src="scripts/app.js"></script>
 
   </head>
-  <body ng-app="angularSeedPDApp">
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
+  <body ng-app="angularSeedPDApp" layout="column">
 
-            <a class="navbar-brand" ui-sref="#/">Home</a>
-          </div>
+    <!-- Container #1 (see wireframe) -->
+    <md-toolbar layout="row" >
+      <h1>Angular 1.5 - Angular Material - ES6</h1>
+    </md-toolbar>
 
-          <div class="collapse">
+    <!-- Container #2 -->
+    <div flex layout="row">
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a ui-sref="home">Home</a></li>
-              <li><a ui-sref="about">About</a></li>
-              <li><a ui-sref="home">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <!-- Container #3 -->
+      <md-sidenav class="md-whiteframe-z2"></md-sidenav>
+
+      <!-- Container #4 -->
+      <md-content flex id="content" ui-view=""></md-content>
+
     </div>
 
-    <div class="container">
-      <div ui-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
   </body>
 </html>

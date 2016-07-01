@@ -8,7 +8,7 @@ import DataService from '../../services/dataService';
  * # MainCtrl
  * Controller of the angularSeedPDApp
  */
-export default class MainCtrl {
+export default class HomeCtrl {
   /*@ngInject*/
   constructor($scope, DataService) {
     var self = this;

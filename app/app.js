@@ -20,6 +20,7 @@ angular
     'ui.router',
     'ngSanitize',
     'ngTouch',
+    'ngMaterial',
     Controllers.name,
     Services.name
   ])
@@ -28,10 +29,11 @@ angular
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
+      .state('app')
       .state('home', {
         url: '/',
-        templateUrl: 'modules/main/main.html',
-        controller: 'MainCtrl as main'
+        templateUrl: 'modules/home/home.html',
+        controller: 'HomeCtrl as home'
       })
       .state('about', {
         url: '/about',
